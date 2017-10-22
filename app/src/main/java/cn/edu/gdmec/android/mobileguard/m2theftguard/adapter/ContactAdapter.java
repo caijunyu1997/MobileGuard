@@ -35,20 +35,20 @@ public class ContactAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
         ViewHolder holder = null;
-        if(convertView == null){
-            convertView = View.inflate(context, R.layout.item_list_contact_select, null);
+        if(view == null){
+            view = View.inflate(context, R.layout.item_list_contact_select, null);
             holder = new ViewHolder();
-            holder.mNameTV = (TextView) convertView.findViewById(R.id.tv_name);
-            holder.mPhoneTV = (TextView) convertView.findViewById(R.id.tv_phone);
-            convertView.setTag(holder);
+            holder.mNameTV = (TextView) view.findViewById(R.id.tv_name);
+            holder.mPhoneTV = (TextView) view.findViewById(R.id.tv_phone);
+            view.setTag(holder);
         }else{
-            holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) view.getTag();
         }
         holder.mNameTV.setText(contactInfos.get(position).name);
         holder.mPhoneTV.setText(contactInfos.get(position).phone);
-        return convertView;
+        return view;
     }
     static class ViewHolder{
         TextView mNameTV;

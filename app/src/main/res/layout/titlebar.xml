@@ -12,7 +12,7 @@
         android:textColor="@android:color/white"
         android:layout_centerInParent="true" />
 
-    <TextView
+    <ImageView
         android:id="@+id/imgv_leftbtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -20,7 +20,7 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"/>
 
-    <TextView
+    <ImageView
         android:id="@+id/imgv_rightbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
