@@ -37,7 +37,7 @@ public class ContactInfoParser {
                         info.name = data1;
                     }else if("vnd.android.cursor.item/phone_v2".equals(minetype)){
                         System.out.println("电话=" + data1);
-                        info.name = data1;
+                        info.phone = data1;
                     }
                 }
                 //如果姓名和手机都为空，则跳过该条数据
