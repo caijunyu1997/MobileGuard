@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
-/**
- * Created by 蔡俊宇 on 2017/9/24.
- */
-
 public class MyUtils {
 
     public static String getVersion(Context context){
