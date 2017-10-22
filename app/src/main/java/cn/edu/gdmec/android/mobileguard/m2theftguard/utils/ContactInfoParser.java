@@ -28,7 +28,7 @@ public class ContactInfoParser {
                 info.id = id;
                 //2.根据联系人的id，查询data表，把这个id的数据取出来
                 //系统api查询data表的时候，不是真正的查询data表 而是查询的data表的视图
-                Cursor dataCursor = resolver.query(datauri, new String[]{"data1","minetype"}, "raw_contact_id=?", new String[]{ id }, null);
+                Cursor dataCursor = resolver.query(datauri, new String[]{"data1","mimetype"}, "raw_contact_id=?", new String[]{ id }, null);
                 while(dataCursor.moveToNext()){
                     String data1 = dataCursor.getString(0);
                     String minetype = dataCursor.getString(1);
@@ -51,7 +51,7 @@ public class ContactInfoParser {
         return infos;
     }
     public static List<ContactInfo> getSimContacts(Context context){
-        Uri uri = Uri.parse("content://icc.adn");
+        Uri uri = Uri.parse("content://icc/adn");
         List<ContactInfo> infos = new ArrayList<ContactInfo>();
         Cursor mCursor = context.getContentResolver().query(uri, null, null, null, null);
         if (mCursor != null){
