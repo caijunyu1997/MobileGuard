@@ -21,9 +21,6 @@ import java.lang.reflect.Method;
 
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 
-/**
- * Created by 蔡俊宇 on 2017/11/5.
- */
 
 public class InterceptCallReciever extends BroadcastReceiver {
     @Override
