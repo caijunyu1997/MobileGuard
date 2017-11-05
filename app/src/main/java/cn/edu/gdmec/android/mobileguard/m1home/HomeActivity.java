@@ -21,6 +21,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
+import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -53,6 +54,9 @@ public class HomeActivity extends AppCompatActivity {
                             //弹出设置密码框
                             showSetUpPswDialog();
                         }
+                        break;
+                    case 1://点击通讯卫士
+                        startActivity(SecurityPhoneActivity.class);
                         break;
                 }
             }
