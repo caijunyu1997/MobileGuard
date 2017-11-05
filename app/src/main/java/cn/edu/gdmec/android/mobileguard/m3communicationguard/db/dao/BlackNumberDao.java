@@ -37,9 +37,9 @@ public class BlackNumberDao {
         if (blackContactInfo.phoneNumber.startsWith("+86")) {
             blackContactInfo.phoneNumber = blackContactInfo.phoneNumber.substring(3, blackContactInfo.phoneNumber.length());
         }
-        values.put("bumber", blackContactInfo.phoneNumber);
-        values.put("name", blackContactInfo.contactName);
-        values.put("mode", blackContactInfo.mode);
+        values.put("number",blackContactInfo.phoneNumber);
+        values.put("name",blackContactInfo.contactName);
+        values.put("mode",blackContactInfo.mode);
         long rowid = db.insert("blacknumber", null, values);
         if (rowid == -1) { //插入数据不成功
             return false;

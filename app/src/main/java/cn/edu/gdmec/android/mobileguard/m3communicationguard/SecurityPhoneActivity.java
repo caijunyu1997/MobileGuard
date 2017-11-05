@@ -126,7 +126,8 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onResume() {
         super.onResume();
-        if (dao.getTotalNumber() > 0){
+        fillData();
+        /*if (dao.getTotalNumber() > 0){
             mHaveBlackNumber.setVisibility(View.VISIBLE);
             mNoBlackNumber.setVisibility(View.GONE);
         }else{
@@ -138,6 +139,6 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
         pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber, pagesiz));
         if (adapter != null){
             adapter.notifyDataSetChanged();
-        }
+        }*/
     }
 }
