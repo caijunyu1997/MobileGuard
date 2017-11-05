@@ -27,7 +27,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao;
     private ListView mListView;
     private int pagenumber = 0;
-    private int pagesiz = 4;
+    private int pagesize = 4;
     private int totalNumber;
     private List<BlackContactInfo> pageBlackNumber = new ArrayList<BlackContactInfo>();
     private BlackContactAdapter adapter;
@@ -47,7 +47,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             if (pageBlackNumber.size() > 0){
                 pageBlackNumber.clear();
             }
-            pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber, pagesiz));
+            pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber, pagesize));
             if (adapter == null){
                 adapter = new BlackContactAdapter(pageBlackNumber, SecurityPhoneActivity.this);
                 adapter.setCallBack(new BlackContactAdapter.BlackConactCallBack(){
@@ -73,22 +73,22 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
         mNoBlackNumber = (FrameLayout)findViewById(R.id.fl_noblacknumber);
         findViewById(R.id.btn_addblacknumber).setOnClickListener(this);
         mListView = (ListView)findViewById(R.id.lv_blacknumbers);
-        mListView.setOnScrollListener(new AbsListView.OnScrollListener(){
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(AbsListView abslistView, int i) {
-                switch (i){   //i是列表的滚动状态
-                    //case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:  //列表滑动后静止
-                    //case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:  //手指正拖着列表滑动
-                    case AbsListView.OnScrollListener.SCROLL_STATE_FLING:   //列表正自由滑动
+            public void onScrollStateChanged(AbsListView view, int i) {
+                switch (i){ //i是列表的滚动状态
+                    //SCROLL_STATE_FLING  列表滚动后静止
+                    //SCROLL_STATE_TOUCH_SCROOL  列表滚动后静止
+                    case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
                         //获取最后一个可见条目
                         int lastVisiblePosition = mListView.getLastVisiblePosition();
-                        //如果当前条目是最后一个 增查询更多的数据
+                        //如果当前条目是最后一个 增查询更多数据
                         if (lastVisiblePosition == pageBlackNumber.size() -1){
                             pagenumber++;
-                            if (pagenumber * pagesiz >= totalNumber){
-                                Toast.makeText(SecurityPhoneActivity.this,"没有更多数据了", Toast.LENGTH_LONG).show();
-                            }else{
-                                pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesiz));
+                            if (pagenumber*pagesize >= totalNumber){
+                                Toast.makeText(SecurityPhoneActivity.this, "没有更多的数据了", Toast.LENGTH_LONG).show();
+                            }else {
+                                pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesize));
                                 adapter.notifyDataSetChanged();
                             }
                         }
@@ -96,7 +96,10 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
                 }
             }
 
+
+
             @Override
+
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
             }
         });
