@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -59,7 +60,6 @@ public class AppInfoParser {
                 e.printStackTrace();
             }
             //应用的权限申请信息
-
             PackageInfo packinfo2 = null;
             try {
                 packinfo2 = pm.getPackageInfo(packname, PackageManager.GET_PERMISSIONS);
@@ -68,11 +68,19 @@ public class AppInfoParser {
                         appinfo.permisstion= appinfo.permisstion+pio+"\n";
                     }
                 }
-//                String[] p = packinfo2.requestedPermissions;
-//                for (String s : p) {
-//                    appinfo.permisstion+=s;
-//                }
-
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            //应用activityinfo
+            PackageInfo packinfo3;
+            try {
+                packinfo3 = pm.getPackageInfo(packname,PackageManager.GET_ACTIVITIES);
+                ActivityInfo[] activityInfos =  packinfo3.activities;
+                if (activityInfos != null) {
+                    for (ActivityInfo info : activityInfos) {
+                        appinfo.activityInfo = appinfo.activityInfo + "ActivityInfo{" + info.name + "}\n";
+                    }
+                }
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
