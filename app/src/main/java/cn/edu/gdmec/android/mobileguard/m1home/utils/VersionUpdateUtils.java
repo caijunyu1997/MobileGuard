@@ -129,7 +129,7 @@ public class VersionUpdateUtils {
         builder.setMessage(versionEntity.description);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
-        builder.setPositiveButton("立即升级",new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("立刻升级",new DialogInterface.OnClickListener(){
             @Override
            public void onClick(DialogInterface dialogInterface,int i){
                 downloadNewApk(versionEntity.apkurl);
