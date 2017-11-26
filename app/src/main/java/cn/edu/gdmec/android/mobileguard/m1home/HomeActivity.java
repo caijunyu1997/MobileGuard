@@ -24,6 +24,9 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.SecurityPhoneActivity;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.AppManagerActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
+import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanSpeedActivity;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
+import cn.edu.gdmec.android.mobileguard.m6cleancache.CleanCacheActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -65,6 +68,9 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 3://点击手机杀毒
                         startActivity(VirusScanActivity.class);
+                        break;
+                    case 4://点击缓存
+                        startActivity(CacheClearListActivity.class);
                         break;
                 }
             }
