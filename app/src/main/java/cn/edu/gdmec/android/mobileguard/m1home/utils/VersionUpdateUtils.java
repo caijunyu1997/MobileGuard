@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.webkit.MimeTypeMap;
@@ -25,6 +26,8 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
 import java.io.IOException;
 
 import java.util.logging.LogRecord;
@@ -62,9 +65,9 @@ public class VersionUpdateUtils {
         this.downloadCallback = downloadCallback;
         this.nextActivty = nextActivty;
     }
-    private void enterHome() {
+    /*private void enterHome() {
         handler.sendEmptyMessageDelayed(MESSAGE_ENTERHOME, 2000);
-    }
+    }*/
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg){
@@ -133,7 +136,6 @@ public class VersionUpdateUtils {
             @Override
            public void onClick(DialogInterface dialogInterface,int i){
                 downloadNewApk(versionEntity.apkurl);
-                enterHome();
             }
         });
         builder.setNegativeButton("暂不升级",new DialogInterface.OnClickListener(){
@@ -146,9 +148,9 @@ public class VersionUpdateUtils {
         builder.show();
     }
 
-    /*private void enterHome(){
+    private void enterHome(){
         handler.sendEmptyMessage(MESSAGE_ENTERHOME);
-    }*/
+    }
 
     private void downloadNewApk(String apkurl){
         //DownloadUtils downloadUtils = new DownloadUtils();
@@ -196,13 +198,24 @@ public class VersionUpdateUtils {
                     Toast.makeText(context.getApplicationContext(), "下载编号:" + Id + "的" + filename + " 下载完成!", Toast.LENGTH_LONG).show();
                 }
                 context.unregisterReceiver(broadcastReceiver);
-                downloadCallback.afterDownload(filename);
+                downloadCallback.afterDownload((Activity) context,filename);
             }
         };
         context.registerReceiver(broadcastReceiver, intentFilter);
     }
 
+    private void installApk(Activity context, String filename) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setDataAndType(Uri.fromFile(
+                new File(
+                        Environment.getExternalStoragePublicDirectory("/download/").getPath()
+                                +"/"+filename)
+        ),"application/vnd.android.package-archive");
+        context.startActivityForResult(intent,0);
+    }
+
     public interface DownloadCallback {
-        void afterDownload(String filename);
+        void afterDownload(Activity context, String filename);
     }
 }

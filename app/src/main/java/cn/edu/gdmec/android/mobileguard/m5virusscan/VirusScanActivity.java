@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m5virusscan;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Environment;
@@ -51,7 +52,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     };
     VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
         @Override
-        public void afterDownload(String filename) {
+        public void afterDownload(Activity context, String filename) {
             copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
         }
     };
