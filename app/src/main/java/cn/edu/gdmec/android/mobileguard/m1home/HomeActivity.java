@@ -27,6 +27,7 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanActivity;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanSpeedActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CleanCacheActivity;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.TrafficMonitoringActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -71,6 +72,9 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 4://点击缓存
                         startActivity(CacheClearListActivity.class);
+                        break;
+                    case 6:
+                        startActivity(TrafficMonitoringActivity.class);
                         break;
                 }
             }
