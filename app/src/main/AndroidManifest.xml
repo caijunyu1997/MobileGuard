@@ -26,8 +26,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name=".m1home.HomeActivity"/>
@@ -124,6 +125,10 @@
         <activity android:name=".m8trafficmonitor.OperatorSetActivity">
         </activity>
         <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity">
+        </activity>
+        <activity android:name=".m9advancedtools.NumBelongtoActivity">
+        </activity>
+        <activity android:name=".m9advancedtools.AdvancedToolsActivity">
         </activity>
     </application>
 
