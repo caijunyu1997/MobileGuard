@@ -126,8 +126,10 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         smsManager.sendTextMessage("10086",null,"CXLL",null,null);
                         break;
                     case 2://联通
+                        smsManager.sendTextMessage("10010",null,"CXLL",null,null);
                         break;
                     case 3://电信
+                        smsManager.sendTextMessage("10001",null,"108",null,null);
                         break;
                 }
         }
@@ -182,7 +184,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                 float m = Float.parseFloat(split[0]);
                 flow = (long) (m*1024);
             }else if (str.contains("M")){
-                String[] split = str.split("K");
+                    String[] split = str.split("M");
                 float m = Float.parseFloat(split[0]);
                 flow = (long) (m*1024*1024);
             }else if (str.contains("G")){
