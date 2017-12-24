@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="cn.edu.gdmec.android.mobileguard">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -16,6 +17,9 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".App"
@@ -130,6 +134,12 @@
         </activity>
         <activity android:name=".m9advancedtools.AdvancedToolsActivity">
         </activity>
+        <activity android:name=".m9advancedtools.EnterPswActivity">
+        </activity>
+        <activity android:name=".m9advancedtools.AppLockActivity">
+        </activity>
+        <service android:name=".m9advancedtools.service.AppLockService"
+                 android:persistent="true"/>
     </application>
 
 </manifest>

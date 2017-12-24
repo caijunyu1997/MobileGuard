@@ -37,4 +37,6 @@ public class AppInfo {
     }
     /*activityInfo*/
     public String activityInfo;
+    /**应用程序是否加锁*/
+    public boolean isLock;
 }

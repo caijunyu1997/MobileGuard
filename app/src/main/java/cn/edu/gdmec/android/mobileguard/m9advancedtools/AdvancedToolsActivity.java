@@ -43,6 +43,9 @@ public class AdvancedToolsActivity extends Activity implements OnClickListener{
                 //进入归属地查询页面
                 startActivity(NumBelongtoActivity.class);
                 break;
+            case R.id.advanceview_applock:
+                startActivity(AppLockActivity.class);
+                break;
         }
     }
     /**

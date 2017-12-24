@@ -28,4 +28,5 @@
     <color name="light_green">#55DC28</color>
     <!--高级工具模块用到的-->
     <color name="deep_gray">#ff666666</color>
+    <color name="dark_gray">#97FFFF</color>
 </resources>
